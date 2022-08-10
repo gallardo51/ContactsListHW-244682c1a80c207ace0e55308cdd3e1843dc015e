@@ -16,20 +16,27 @@ class SectionTableViewController: UITableViewController {
         persons.count
     }
     
-    //Использование метода для присваивания заголовка секции
+    //MARK: - Method for title section
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         persons[section].fullName
     }
+
+    //MARK: - Method for count cells
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         2
     }
+    
+    //MARK: - Method for delegate data from model
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         let person = persons[indexPath.section]
         var content = cell.defaultContentConfiguration()
+        
+    //MARK: - Method for contact details and pictures in table view
         
         switch indexPath.row {
         case 0:
@@ -44,6 +51,8 @@ class SectionTableViewController: UITableViewController {
                 
         return cell
     }
+    
+    //MARK: - Method for chosen cell
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
